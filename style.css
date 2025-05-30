@@ -1,0 +1,654 @@
+/* Reset and General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* ......................... */
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* Adjust as needed for header/footer */
+    padding: 50px 0;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 500px; /* Increased width of product card */
+    margin: 10px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px; /* Fixed height for image */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.product-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-card p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.product-card .price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #e72164;
+    margin-bottom: 20px;
+}
+
+.view-details-button {
+    background-color: #e72164;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-details-button:hover {
+    background-color: #c81e56;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup.show {
+    display: flex;
+    opacity: 1;
+}
+
+
+.popup-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px; /* Increased max-width */
+    width: 95%;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    text-align: left;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Horizontal layout for image and text */
+    align-items: flex-start; /* Align items to the start (top) */
+    gap: 20px; /* Add some gap between image and text */
+}
+
+.popup.show .popup-content {
+    transform: translateY(0);
+}
+
+.popup-content h2 {
+    font-size: 2em;
+    margin-bottom: 10px; /* Reduced margin-bottom */
+    color: #e72164;
+}
+
+.popup-content img {
+    max-width: 300px; /* Increased max-width for image */
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0; /* Removed margin-bottom */
+    flex: 1; /* Image takes up 1/2 of the available space */
+}
+
+.popup-content .text-content {
+    flex: 1; /* Text content takes up 1/2 of the available space */
+}
+
+.popup-content p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px; /* Reduced margin-bottom */
+}
+
+.popup-content .price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e72164;
+    margin-bottom: 20px;
+}
+
+.popup-content .add-to-cart {
+    background-color: #e72164;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.popup-content .add-to-cart:hover {
+    background-color: #c81e56;
+}
+
+.popup-content .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    color: #888;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 5px;
+    line-height: 1;
+}
+
+.popup-content .close-button:hover {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .popup-content {
+        padding: 20px;
+        flex-direction: column; /* Stack image and text vertically on smaller screens */
+    }
+     .popup-content img{
+        max-width: 100%;
+     }
+
+    .popup-content h2 {
+        font-size: 1.75em;
+    }
+
+    .popup-content .price {
+        font-size: 1.25em;
+    }
+
+    .popup-content .add-to-cart {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        width: 90%;
+        margin: 10px auto;
+    }
+     .main-content {
+        padding: 20px 0;
+    }
+}
+/* ............................ */
+.logo h1 {
+    font-family: 'Mochiy Pop One', sans-serif;
+    color: #f70355;
+    margin: 0;
+    font-size: 3em;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #e72164;
+}
+
+nav a.active {
+    color: #e72164;
+    font-weight: bold;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: transparent;
+    color: #555;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    margin-left: 25px;
+}
+
+.dropdown-btn:hover, .dropdown-btn.active {
+    color: #e72164;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.dropdown-content a {
+    color: #555;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-left: 0;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+    color: #e72164;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-arrow {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Hero Section Styles */
+.hero {
+    /* background-image: linear-gradient(rgba(255, 225, 236), rgba(255, 185, 196)); Replace with your image */
+    background-image: url('img/traditional-japanese-wave-sticker-with-white-border-vector_53876-127415.jpg.avif');
+    background-size: max 100%;
+    background-position: left;
+    color: #fff;
+    text-align: center;
+    padding: 200px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h2 {
+    font-size: 3.5em;
+    color: #e72164;
+    margin-bottom: 20px;
+    font-family: 'Mochiy Pop One', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 800px;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* subscription button */
+.cta-button {
+    background-color: #e72164;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    background-color: #c81e56;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Featured Snacks Styles */
+.featured-snacks, .subscription-plans {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.featured-snacks h2, .subscription-plans h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    font-family: 'Mochiy Pop One', sans-serif;
+    color: #e72164;
+}
+
+.snack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.snack-item {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.snack-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.snack-item img {
+    max-width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.snack-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.snack-item p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.snack-button {
+    background-color: #f5f5f5;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.snack-button:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+/* Subscription Plans Styles */
+.subscription-plans {
+    background-color: #f0f0f0;
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.plan-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.plan-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.plan-item h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #e72164;
+}
+
+.plan-item p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.plan-item .price {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.plan-button {
+    background-color: #e72164;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.plan-button:hover {
+    background-color: #c81e56;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 25px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    font-size: 1.1em;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .hero h2 {
+        font-size: 3em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    .snack-grid, .plan-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav a {
+        margin-left: 15px;
+    }
+     .dropdown-btn {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+    .dropdown-btn {
+        margin: 10px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .snack-grid, .plan-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    header {
+        padding: 15px 0;
+    }
+
+    .logo h1 {
+        font-size: 2.5em;
+    }
+
+    nav a {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+     .dropdown-btn {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+
+    .hero {
+        padding: 150px 20px;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+
+    .featured-snacks h2, .subscription-plans h2 {
+        font-size: 2em;
+    }
+
+    footer p {
+        font-size: 0.9em;
+    }
+}
